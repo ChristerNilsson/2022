@@ -1,6 +1,6 @@
 # 2022-003-Bokmassan
 
-[Prova på!](https://christernilsson.github.io/2022-003-Bokmassan)
+[Prova på!](https://christernilsson.github.io/2022/003-Bokmassan)
 
 * Visar information om scener och event
 	* Tidsfönstret är två timmar brett

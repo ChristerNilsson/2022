@@ -1,6 +1,6 @@
 # 2022-008-Berger
 
-[Try it!](https://christernilsson.github.io/2022-008-Berger/)
+[Try it!](https://christernilsson.github.io/2022/008-Berger/)
 
 [Round Robin Tournament](https://en.wikipedia.org/wiki/Round-robin_tournament)
 
