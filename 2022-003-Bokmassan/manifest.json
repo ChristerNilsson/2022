@@ -1,7 +1,0 @@
-{
-	"short_name": "Bokmassan",
-	"name": "Svenska Bokmässan",
-	"start_url": "/index.html",
-	"display": "fullscreen",
-	"orientation": "landscape"
-}
