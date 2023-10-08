@@ -1,6 +1,8 @@
-TITLE0 = 'Svenska bok- och mediemässan'
-TITLE1 = '2022-08-20 F'
-scenes = {}
+#TITLE0 = 'Svenska bok- och mediemässan'
+#TITLE1 = '2022-08-20 F'
+
+data = {}
+
 SCENES = 0
 XOFF = 0 # pixels
 YOFF = 0 # pixels
@@ -24,6 +26,8 @@ pågående = 0
 kommande = 0
 p = 0
 TS = 0
+scenes = null
+titles = null
 
 minutes = (hhmm) -> # minutes(1234) = 12*60+34
 	h = Math.floor hhmm/100
@@ -42,96 +46,13 @@ pretty = (m) -> # pretty(67) = "01:07"
 autonomous = true
 timestamp = minutes 1150
 
-event = (scen,lst) ->
-	lst[0] = minutes lst[0]
-	scenes[scen] ||= []
-	scenes[scen].push lst
-
-event 'S1',[1100,15,"Tal","Carl Lundström"] 
-event 'S1',[1120,45,"P1. Migrationspolitik","Lennart Matikainen, Arne Weinz, Hans Jensevik, Stefan Torssell, Evelina Hahne"] 
-event 'S1',[1215,40,"P6. Kriminalitet","Axel W Karlsson, Alexander Söderberg, Nils Littorin, Conny Andersson, Nick Alinia"] 
-event 'S1',[1300,20,"Tal","Mikael Willgert"] 
-event 'S1',[1330,35,"P2. Energipolitik/Kärnkraft","Peder Bokenhielm, Li Sam Björk, Jan Berger, Alexander Pohl"] 
-event 'S1',[1410,10,"Tal","Tobbe Larsson"] 
-event 'S1',[1425,45,"P3. Nato","Roger Richthoff, Johan Lindblad, Oscar Overgaard, Ulf Sandmark, Jeff Ahl"] 
-event 'S1',[1545,10,"Tal","Arne Weinz"]
-event 'S1',[1600,40,"P5. Klimatfrågan","Gösta Wallin, Staffan Mörner, Sture Åström, Alfred Westh"]
-event 'S1',[1650,10,"P4. Ekonomi","Henrik Sundin"]
-
-event 'S2',[1130,40,"P1. Demonstrationer","Max Winter, Håkan Bergmark, Johan Widén, Pierre Tinderfjäll, Emilia Ögell"]
-event 'S2',[1220,10,"Tal","Eva Donell"]
-event 'S2',[1235,35,"P3. Intresseorganisationer","Ingrid Carlqvist, Peder Bokenhielm, René Malmgren, Andreas Hultén"]
-event 'S2',[1320,10,"Tal","Alfred Westh"]
-event 'S2',[1335,50,"P4. Rörelser","Marianne Liljeholt, Miranda Törnqvist, Glenn Dormer, Mikael Cromsjö, Alfred Westh, Maneka Helleberg"]
-event 'S2',[1510,10,"HMF-Medalj utdelning","Rasmus Paludan"]
-event 'S2',[1525,10,"Tal","Robert Mathiasson"]
-event 'S2',[1540,35,"P2. Nätverk","David Bergqvist, Tobbe Larsson, Eva Donell, Andreas Jansson"]
-event 'S2',[1625,10,"Tal","Jonas Nilsson"]
-event 'S2',[1650,10,"P4. Alternativmedier","Carl Lundström"]
-
-event 'S3',[1140,40,"P2. Organisationer","Johan Lindblad, Mikael Fjällid, Jesper Johansson, Aida Reva, Love Romert"]
-event 'S3',[1230,45,"P5. Agenda 2030 och","Carl Lundström, Hans Erixon, Torbjörn Holkner, Sture Åström, Gustav Kasselstrand"]
-event 'S3',[1335,50,"P3. Metoder","Alexander, Helen Osieja, Felicia Eriksson, Johannes Haddad, Robert Rosenkvist, Fabian Fjälling"]
-event 'S3',[1435,25,"Livepodd","Jonas Nilsson, Anton Stigermark"]
-event 'S3',[1505,10,"Tal","Nils Littorin"]
-event 'S3',[1520,35,"P4. Övervakningsmetoder","Rikard Högberg, Åke blomdahl, Lena Ohlson, Ingemar Ljungqvist"]
-event 'S3',[1615,35,"P1. Personer","Johan Lindblad, Stefan Torsell, Tommy Ulmnäs, Christian Peterson, Mattias Dahlgren"]
-
-event 'S4',[1225,30,"D3. Ryssland eller Ukraina?","Arne Weinz, Izabella Jarvandi, Gösta Wallin, Erik Almqvist"]
-event 'S4',[1305,20,"D1. Abortfrågan","Nick Alinia, Johanna Carsbrant, Miranda Törnqvist"]
-event 'S4',[1335,25,"D6. Mångkultur för/emot?","Izabella Jarvandi, Karl-Olov Arnstberg, Andreas Sidkvist"]
-event 'S4',[1410,25,"D10. Uthängningar eller inte?","Izabella Jarvandi, Christian Peterson, Robert Mathiason"]
-event 'S4',[1445,20,"D8. AI Hot eller möjlighet?","Izabella Jarvandi, Tobbe Larsson, Mikael Cromsjö"]
-event 'S4',[1515,30,"D9. Klimatbluff eller reellt hot?","Izabella Jarvandi, Lars Bern, Alfred Westh"]
-event 'S4',[1555,20,"D7. Bränna koranen","Christian Peterson, Rasmus Paludan, Tobbe Larsson"]
-event 'S4',[1625,30,"D5. NATO för/emot?","Izabella Jarvandi, Roger Richthoff, Tage Perntz"]
-
-event 'S5',[1140,45,"Personporträtt 2","Zoia Zakariasdotter, Ylva Franzén"]
-event 'S5',[1235,40,"Personporträtt 4","Jan Tullberg"]
-event 'S5',[1325,40,"Personporträtt 5","Lars Bern"]
-event 'S5',[1415,40,"Personporträtt 3","Selma Gamaleldin"]
-event 'S5',[1505,40,"Personporträtt 6","Patrik Engellau"]
-event 'S5',[1555,40,"Personporträtt 1","Carl Lundström"]
-event 'S5',[1645,15,"Inblick med Nick","Nick Alinia, Rasmus Paludan"]
-
-event 'S6',[1235,35,"Ek4. Elpriserna","Magnus Stenlund, Jan Blomgren"]
-event 'S6',[1320,30,"Ek3. Räntorna","Peter Abelin"]
-event 'S6',[1400,30,"Ek2. Investeringar","Henrik Sundin"]
-event 'S6',[1455,30,"Ek5. Matpriserna","Olle Felten"]
-event 'S6',[1535,30,"Ek1. Inflationen","Jan Tullberg"]
-event 'S6',[1615,30,"Ek6. Skatterna","Micael Hamberg"]
-
-event 'S7',[1220,30,"Parti8. Nix to the Six","Emilia Ögell, Hans Jensevik"]
-event 'S7',[1300,15,"Parti6. Nyttiga Svenne","Emilia Ögell, Ylva Franzén & Johan Lindblad"]
-event 'S7',[1325,30,"Parti1. AfS","Erik Almqvist, Gustav Kasselstrand, Andreas Feymark"]
-event 'S7',[1400,25,"Parti10. Europeiska Arbetarpartiet","Erik Almqvist, Kjell Sundqvist"]
-event 'S7',[1435,15,"Parti9. Partiet Frihet","Emilia Ögell, Max Winter & Natalie Jonsson"]
-event 'S7',[1500,30,"Parti4. MOD","Erik Almqvist, Andreas Sidqvist"]
-event 'S7',[1535,30,"Parti7. Malmölistan","Erik Almqvist, Nils Littorin"]
-event 'S7',[1615,25,"Parti11. Direktdemokraterna","Erik Almqvist, Lotte Johansson"]
-event 'S7',[1650,10,"Parti5. Kristna Värdepartiet","Emilia Ögell"]
-
-event 'S8',[1145,20,"Film","Ingrid Carlqvist"]
-event 'S8',[1210,10,"Fotograf","Lotte Johansson"]
-event 'S8',[1225,20,"TV-spel","William Hahne"]
-event 'S8',[1250,20,"Film","Jonas Nilsson"]
-event 'S8',[1320,25,"Musik","Ulf Bejerstrand"]
-event 'S8',[1355,20,"Musik","Martina Edoff"]
-event 'S8',[1415,5,"Sång","David Berg"]
-event 'S8',[1425,20,"Film","Jon Rekdahl"]
-event 'S8',[1450,10,"Konst","Åke Blomdahl"]
-event 'S8',[1505,10,"Konst","Dan Park"]
-event 'S8',[1525,30,"Musik","Fredrik Larsson, Joakim"]
-event 'S8',[1605,25,"Musik","Miqael Hicks"]
-event 'S8',[1635,25,"Författare","Einar Askestad"]
-
 drawTitle = ->
 	push()
 	fill 'darkgray'
 	textAlign RIGHT
 	textSize TS
-	text TITLE1,width,0.4*YOFF
-	text TITLE0,width,0.9*YOFF
+	text titles[1],width,0.4*YOFF
+	text titles[0],width,0.9*YOFF
 	pop()
 
 rutnät = ->
@@ -158,7 +79,7 @@ tider = (ts,left) ->
 		fill "yellow"
 		date = new Date()
 		s = date.getSeconds()
-		if s<10 then s = '0' + s
+		if s < 10 then s = "0" + s
 		text pretty(timestamp)+':'+s,x,0.7*DY
 	else
 		fill "darkgray"
@@ -377,6 +298,7 @@ touchEnded = (event) ->
 
 preload = ->
 	qr = loadImage 'qr-code.png'
+	data = loadJSON './data.json'
 
 setup = ->
 	displaywidth = 150
@@ -384,7 +306,13 @@ setup = ->
 	createCanvas innerWidth,innerHeight
 	TS = 0.035 * height
 	textsize = TS
-	SCENES = _.size scenes
+	scenes = data.scenes
+	titles = data.titles
+	SCENES = _.size data.scenes
+	for key of scenes
+		scene = scenes[key]
+		for event in scene
+			event[0] = minutes event[0]
 	DX = Math.round 0.02 * width
 	DY = 0.9 * height/SCENES
 	XOFF = 0.0 * DX # pixels

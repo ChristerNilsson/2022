@@ -1,0 +1,98 @@
+{
+	"titles": ["Svenska bok- och mediemässan","2022-08-20"],
+	"scenes": {
+		"S1": [
+			[1100,15,"Tal","Carl Lundström"],
+			[1120,45,"P1. Migrationspolitik","Lennart Matikainen, Arne Weinz, Hans Jensevik, Stefan Torssell, Evelina Hahne"],
+			[1215,40,"P6. Kriminalitet","Axel W Karlsson, Alexander Söderberg, Nils Littorin, Conny Andersson, Nick Alinia"],
+			[1300,20,"Tal","Mikael Willgert"],
+			[1330,35,"P2. Energipolitik/Kärnkraft","Peder Bokenhielm, Li Sam Björk, Jan Berger, Alexander Pohl"],
+			[1410,10,"Tal","Tobbe Larsson"],
+			[1425,45,"P3. Nato","Roger Richthoff, Johan Lindblad, Oscar Overgaard, Ulf Sandmark, Jeff Ahl"],
+			[1545,10,"Tal","Arne Weinz"],
+			[1600,40,"P5. Klimatfrågan","Gösta Wallin, Staffan Mörner, Sture Åström, Alfred Westh"],
+			[1650,10,"P4. Ekonomi","Henrik Sundin"]
+		],
+
+		"S2" : [
+			[1130,40,"P1. Demonstrationer","Max Winter, Håkan Bergmark, Johan Widén, Pierre Tinderfjäll, Emilia Ögell"],
+			[1220,10,"Tal","Eva Donell"],
+			[1235,35,"P3. Intresseorganisationer","Ingrid Carlqvist, Peder Bokenhielm, René Malmgren, Andreas Hultén"],
+			[1320,10,"Tal","Alfred Westh"],
+			[1335,50,"P4. Rörelser","Marianne Liljeholt, Miranda Törnqvist, Glenn Dormer, Mikael Cromsjö, Alfred Westh, Maneka Helleberg"],
+			[1510,10,"HMF-Medalj utdelning","Rasmus Paludan"],
+			[1525,10,"Tal","Robert Mathiasson"],
+			[1540,35,"P2. Nätverk","David Bergqvist, Tobbe Larsson, Eva Donell, Andreas Jansson"],
+			[1625,10,"Tal","Jonas Nilsson"],
+			[1650,10,"P4. Alternativmedier","Carl Lundström"]
+		],
+
+		"S3": [
+			[1140,40,"P2. Organisationer","Johan Lindblad, Mikael Fjällid, Jesper Johansson, Aida Reva, Love Romert"],
+			[1230,45,"P5. Agenda 2030 och","Carl Lundström, Hans Erixon, Torbjörn Holkner, Sture Åström, Gustav Kasselstrand"],
+			[1335,50,"P3. Metoder","Alexander, Helen Osieja, Felicia Eriksson, Johannes Haddad, Robert Rosenkvist, Fabian Fjälling"],
+			[1435,25,"Livepodd","Jonas Nilsson, Anton Stigermark"],
+			[1505,10,"Tal","Nils Littorin"],
+			[1520,35,"P4. Övervakningsmetoder","Rikard Högberg, Åke blomdahl, Lena Ohlson, Ingemar Ljungqvist"],
+			[1615,35,"P1. Personer","Johan Lindblad, Stefan Torsell, Tommy Ulmnäs, Christian Peterson, Mattias Dahlgren"]
+		],
+
+		"S4": [
+			[1225,30,"D3. Ryssland eller Ukraina?","Arne Weinz, Izabella Jarvandi, Gösta Wallin, Erik Almqvist"],
+			[1305,20,"D1. Abortfrågan","Nick Alinia, Johanna Carsbrant, Miranda Törnqvist"],
+			[1335,25,"D6. Mångkultur för/emot?","Izabella Jarvandi, Karl-Olov Arnstberg, Andreas Sidkvist"],
+			[1410,25,"D10. Uthängningar eller inte?","Izabella Jarvandi, Christian Peterson, Robert Mathiason"],
+			[1445,20,"D8. AI Hot eller möjlighet?","Izabella Jarvandi, Tobbe Larsson, Mikael Cromsjö"],
+			[1515,30,"D9. Klimatbluff eller reellt hot?","Izabella Jarvandi, Lars Bern, Alfred Westh"],
+			[1555,20,"D7. Bränna koranen","Christian Peterson, Rasmus Paludan, Tobbe Larsson"],
+			[1625,30,"D5. NATO för/emot?","Izabella Jarvandi, Roger Richthoff, Tage Perntz"]
+		],
+
+		"S5": [
+			[1140,45,"Personporträtt 2","Zoia Zakariasdotter, Ylva Franzén"],
+			[1235,40,"Personporträtt 4","Jan Tullberg"],
+			[1325,40,"Personporträtt 5","Lars Bern"],
+			[1415,40,"Personporträtt 3","Selma Gamaleldin"],
+			[1505,40,"Personporträtt 6","Patrik Engellau"],
+			[1555,40,"Personporträtt 1","Carl Lundström"],
+			[1645,15,"Inblick med Nick","Nick Alinia, Rasmus Paludan"]
+		],
+
+		"S6": [
+			[1235,35,"Ek4. Elpriserna","Magnus Stenund, Jan Blomgren"],
+			[1320,30,"Ek3. Räntorna","Peter Abelin"],
+			[1400,30,"Ek2. Investeringar","Henrik Sundin"],
+			[1455,30,"Ek5. Matpriserna","Olle Felten"],
+			[1535,30,"Ek1. Inflationen","Jan Tullberg"],
+			[1615,30,"Ek6. Skatterna","Micael Hamberg"]
+		],
+
+		"S7": [
+			[1220,30,"Parti8. Nix to the Six","Emilia Ögell, Hans Jensevik"],
+			[1300,15,"Parti6. Nyttiga Svenne","Emilia Ögell, Ylva Franzén & Johan Lindblad"],
+			[1325,30,"Parti1. AfS","Erik Almqvist, Gustav Kasselstrand, Andreas Feymark"],
+			[1400,25,"Parti10. Europeiska Arbetarpartiet","Erik Almqvist, Kjell Sundqvist"],
+			[1435,15,"Parti9. Partiet Frihet","Emilia Ögell, Max Winter & Natalie Jonsson"],
+			[1500,30,"Parti4. MOD","Erik Almqvist, Andreas Sidqvist"],
+			[1535,30,"Parti7. Malmölistan","Erik Almqvist, Nils Littorin"],
+			[1615,25,"Parti11. Direktdemokraterna","Erik Almqvist, Lotte Johansson"],
+			[1650,10,"Parti5. Kristna Värdepartiet","Emilia Ögell"]
+		],
+
+		"S8" : [
+			[1145,20,"Film","Ingrid Carlqvist"],
+			[1210,10,"Fotograf","Lotte Johansson"],
+			[1225,20,"TV-spel","William Hahne"],
+			[1250,20,"Film","Jonas Nilsson"],
+			[1320,25,"Musik","Ulf Bejerstrand"],
+			[1355,20,"Musik","Martina Edoff"],
+			[1415, 5,"Sång","David Berg"],
+			[1425,20,"Film","Jon Rekdahl"],
+			[1450,10,"Konst","Åke Blomdahl"],
+			[1505,10,"Konst","Dan Park"],
+			[1525,30,"Musik","Fredrik Larsson, Joakim"],
+			[1605,25,"Musik","Miqael Hicks"],
+			[1635,25,"Författare","Einar Askestad"]
+		]
+	}
+}
