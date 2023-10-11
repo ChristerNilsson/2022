@@ -15,7 +15,7 @@
 
 import time
 import json
-from os import scandir, mkdir, rename
+from os import scandir, mkdir, rename,chdir
 from os.path import exists, getsize, getmtime
 from datetime import datetime
 from PIL import Image
@@ -30,17 +30,14 @@ QUALITY = 95
 WIDTH = 475
 YEAR = datetime.today().year
 
-#ROOT = "C:/github/2022-014-Bildbanken2/"
-ROOT = ""
-
-Original = ROOT + "Original"       # cirka 2.000.000 bytes per bild (Readonly)
-Home     = ROOT + "public/Home"    # cirka 2.000.000 bytes per bild
-small    = ROOT + "public/small"   # cirka 	  25.000 bytes per bild
-JSON     = ROOT + "public/json/"   # cirka       120 bytes per bild (bilder.json)
-MD5      = ROOT + 'MD5.json'       # cirka        65 bytes per bild
+Original = "Original"       # cirka 2.000.000 bytes per bild (Readonly)
+Home     = "public/Home"    # cirka 2.000.000 bytes per bild
+small    = "public/small"   # cirka 	  25.000 bytes per bild
+JSON     = "public/json/"   # cirka       120 bytes per bild (bilder.json)
+MD5      = 'MD5.json'       # cirka        65 bytes per bild
 FILE_INDEX = JSON + 'file_index.txt'
-PUBLIC     = ROOT + "public/"
-TREE       = ROOT + 'tree.txt'
+PUBLIC     = "public/"
+TREE       = 'tree.txt'
 
 def ass(a,b):
 	if a == b: return
@@ -68,7 +65,7 @@ def loadJSON(path):
 def ensurePath(root,path):
 	arr = path.split("/")
 	for i in range(len(arr)):
-		p = root + "/" + "/".join(arr[0:i])
+		p = root + "/".join(arr[0:i])
 		if not exists(p): mkdir(p)
 
 def patch(tree,path,data):
@@ -295,7 +292,13 @@ def tree(d,f):
 		if not is_jpg(path):
 			f.write(path.replace('/',' • ')[3:] + '\n')
 
+def backup(datum,filename):
+	ensurePath(JSON, 'backup/' + datum + '/')
+	shutil.copyfile(JSON + filename, JSON + 'backup/' + datum + '/' + filename)
+
 ######################
+
+# chdir("C:/github/2022/014-Bildbanken2/")
 
 start = time.time()
 
@@ -354,6 +357,11 @@ if update:
 	with open(MD5,                      'w', encoding="utf8") as f: dumpjson(md5Register,f)
 	d = flatten(cache, {})  # Skickas till GCS
 	with open(TREE,                     'w', encoding="utf8") as f:	tree(d, f)
+
+	today = datetime.now().isoformat()[0:10]
+	backup(today,'bilder.json')
+	backup(today,'file_index.json')
+	backup(today,'file_index.txt')
 
 	print()
 	print(round(time.time() - start,3),'seconds')
