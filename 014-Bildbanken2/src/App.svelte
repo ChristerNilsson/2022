@@ -14,7 +14,7 @@
 	import {fileIndex,Home,invHome,images,selected,settings} from './lib/stores.js'
 	import {assert,comp2,is_jpg,log,range,spaceShip,unpack} from './lib/utils.js'
 
-	const version = '2023-04-25 19:30'
+	const version = '2023-10-11 12:00'
 
 	let md5
 
@@ -29,6 +29,7 @@
 		$invHome = invertHome($Home)
 		path = [$Home]
 		stack = ["Home"]
+		consumeParameters()
 		return ''
 	}
 
@@ -121,24 +122,20 @@
 	}
 
 	function consumeFolder(folder) {
-		console.log(folder)
 		sokruta = ""
 		stack = folder.split("/")
 		path.length = 0 // clear
 		path.push($Home)
 		let pointer = $Home
 		for (const key of stack.slice(1)) {
-			console.log(key)
 			pointer = pointer[key]
 			path.push(pointer)
 		}
 		path = path
-		stack = stack 
+		stack = stack
 	}
 
-$: consumeParameters($invHome)
-
-	function consumeParameters(ih) {
+	function consumeParameters() {
 		const queryString = window.location.search
 		const urlParams = new URLSearchParams(queryString)
 		if (urlParams.has("folder")) consumeFolder(urlParams.get("folder"))
@@ -281,7 +278,6 @@ $: consumeParameters($invHome)
 			antal += stat[key]
 		}
 
-		log(visibleKeys)
 		return [st.join(' '),`found ${antal} images in ${new Date() - start} ms`,result,visibleKeys]
 	}
 
