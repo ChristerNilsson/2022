@@ -1,6 +1,7 @@
 <script>
 
 	export let MAX_DOWNLOAD
+	const DOT = ' ' + String.fromCharCode(8226) + ' '
 
 	const helpTexts = []
 	helpTexts.push("Separate words with a space or an underscore (_)")
@@ -32,7 +33,7 @@
 <div>
 	{#each helpTexts as helpText}
 		<div style="width:475px;">
-			&nbsp; • {helpText}
+			&nbsp;{DOT}{helpText}
 		</div>
 		{/each}
 		<div style="width:475px;">

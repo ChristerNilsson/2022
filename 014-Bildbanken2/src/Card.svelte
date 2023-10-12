@@ -3,6 +3,7 @@
 	import {log,prettyFilename,round} from './lib/utils.js'
 	import {fileIndex,invHome,images,selected} from './lib/stores.js'
 
+	const DOT = ' ' + String.fromCharCode(8226) + ' '
 	export let WIDTH
 	export let card
 
@@ -34,7 +35,7 @@
 	function prettyPath(path) { // Tag bort eventuellt T-nummer
 		path = path.split('/')
 		path = path.slice(2,path.length-1)
-		path = path.join(" • ")
+		path = path.join(DOT)
 		path = path.replaceAll(/_F\d+/g,'') // Facts
 		path = path.replaceAll(/_L\d+/g,'')
 		path = path.replaceAll(/_I\d+/g,'')
@@ -93,7 +94,7 @@
 			{#each VS as V}&nbsp;<a target="_blank" href="https://player.vimeo.com/video/{V}">Video</a>{/each}
 			<!-- <span style="flex:2; text-align:center; white-space:nowrap;"></span> -->
 			<!-- • {round(ih.bw*ih.bh/1024/1024,1)}MP -->
-			<span style="flex:1; text-align:right; white-space:nowrap;"> {ih.timestamp.slice(0,16)} • {ih.bw}x{ih.bh} • {round(ih.bs/1024,0)}kB</span>
+			<span style="flex:1; text-align:right; white-space:nowrap;"> {ih.timestamp.slice(0,16)}{DOT}{ih.bw}x{ih.bh}{DOT}{round(ih.bs/1024,0)}kB</span>
 		</div>	
 	</div>
 </div>

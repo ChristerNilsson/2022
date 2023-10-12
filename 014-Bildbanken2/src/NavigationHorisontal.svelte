@@ -2,13 +2,14 @@
 	import _ from "lodash"
 	export let stack
 	export let WIDTH
-
+	const DOT = ' ' + String.fromCharCode(8226) + ' '
+	
 	function clean(stack){
 		const n = stack.length
 		let s = ""
 		if (n==1) s = stack[0] // Home
 		if (n==2) s = stack[1] // 2222
-		if (n>=3) s = stack.slice(2).join(" • ")
+		if (n>=3) s = stack.slice(2).join(DOT)
 		s = s.replaceAll(/_M\d+/g,'')
 		s = s.replaceAll(/[ _]T\d\d\d\d\d/g,'')
 		s = s.replaceAll(/_V\d+/g,'')

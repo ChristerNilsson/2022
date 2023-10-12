@@ -7,11 +7,12 @@
 	export let md5
 
 	const INCR = 0.08
+	const DOT = ' ' + String.fromCharCode(8226) + ' '
 	let exif = null
 
 	let big = makeBig($invHome[md5])
 	let filename = big.filename
-	let path = big.path.replaceAll("_"," ").replace('.jpg','').replaceAll("/",' • ')
+	let path = big.path.replaceAll("_"," ").replace('.jpg','').replaceAll("/",DOT)
 
 	function makeBig(ih) {
 		const skala = Math.min(innerHeight/ih.bh, innerWidth/ih.bw)
@@ -105,10 +106,10 @@
 
 <span style="top:8%">{big.filename}</span>
 <span style="top:12%">{path}</span>
-<span style="top:20%"> {round(big.bw * big.bh/1024/1024,1)} MP • {big.bw} x {big.bh} • {round(big.bs/1024)} kB </span>
-<span style="top:16%;"> {big.timestamp.replace(" "," • ")} </span>
+<span style="top:20%"> {round(big.bw * big.bh/1024/1024,1)} MP{DOT}{big.bw} x {big.bh}{DOT}{round(big.bs/1024)} kB </span>
+<span style="top:16%;"> {big.timestamp.replace(" ",DOT)} </span>
 {#if exif && exif.Model}
-	<span style="top:24%;"> {exif.Model} • f/{exif.FNumber} • 1/{1/exif.ExposureTime} • {exif.FocalLength} mm • ISO {exif.ISOSpeedRatings} </span>
+	<span style="top:24%;"> {exif.Model}{DOT}f/{exif.FNumber}{DOT}1/{1/exif.ExposureTime}{DOT}{exif.FocalLength} mm{DOT}ISO {exif.ISOSpeedRatings} </span>
 	<span style="top:28%;"> © {exif.Copyright} </span>
 {/if}
 
