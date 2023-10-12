@@ -358,10 +358,14 @@ if update:
 	d = flatten(cache, {})  # Skickas till GCS
 	with open(TREE,                     'w', encoding="utf8") as f:	tree(d, f)
 
-	today = datetime.now().isoformat()[8:10]
-	backup(today,'bilder.json')
-	backup(today,'file_index.json')
-	backup(today,'file_index.txt')
+	today = datetime.now().isoformat()
+	y = today[0:4]
+	m = today[5:7]
+	d = today[8:10]
+	for bdir in ['year/' + y, 'month/' + m, 'day/' + d]:
+		backup(bdir,'bilder.json')
+		backup(bdir,'file_index.json')
+		backup(bdir,'file_index.txt')
 
 	print()
 	print(round(time.time() - start,3),'seconds')
