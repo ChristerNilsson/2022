@@ -358,7 +358,7 @@ if update:
 	d = flatten(cache, {})  # Skickas till GCS
 	with open(TREE,                     'w', encoding="utf8") as f:	tree(d, f)
 
-	today = datetime.now().isoformat()[0:10]
+	today = datetime.now().isoformat()[8:10]
 	backup(today,'bilder.json')
 	backup(today,'file_index.json')
 	backup(today,'file_index.txt')
