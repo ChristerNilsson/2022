@@ -1,5 +1,7 @@
 # 2022-005-ChessClock
 
+[Try it!](https://christernilsson.github.io/2022/005-ChessClock)
+
 ## Chess clock with fewer clicks.
 No more increment and decrement. 
 Click on the numbers and add together.

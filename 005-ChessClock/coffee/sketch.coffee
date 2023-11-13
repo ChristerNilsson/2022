@@ -323,15 +323,15 @@ class MainButton extends Button
 draw = -> 
 	page.draw()
 
-	push() # DEBUG!
-	fill 'gray'
-	textSize 0.03*height
-	text round3(clocks[0]), 0.2 * width, 0.95 * height
-	text "S:#{state}",      0.4 * width, 0.95 * height
-	text Math.round(frameRate()), 0.5 * width, 0.95 * height
-	text "P:#{player}",     0.6 * width, 0.95 * height
-	text round3(clocks[1]), 0.8 * width, 0.95 * height
-	pop()
+	# push() # DEBUG!
+	# fill 'gray'
+	# textSize 0.03*height
+	# text round3(clocks[0]), 0.2 * width, 0.95 * height
+	# text "S:#{state}",      0.4 * width, 0.95 * height
+	# text Math.round(frameRate()), 0.5 * width, 0.95 * height
+	# text "P:#{player}",     0.6 * width, 0.95 * height
+	# text round3(clocks[1]), 0.8 * width, 0.95 * height
+	# pop()
 
 preload = -> qr = loadImage 'qr.png'
 
