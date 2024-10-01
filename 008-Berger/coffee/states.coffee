@@ -31,6 +31,8 @@ svguse  = (id,x,y,skalax,skalay) -> "<use href=\"##{id}\" x=\"#{x}\" y=\"#{y}\" 
 svggrid = (headers,ws,digits,n,dx,dy,totalWidth) ->
 	headers = headers.split ' '
 	res = []
+	res.push "<style> text {font-family: Helvetica, sans-serif;}</style>"
+
 	x0 = 0
 	y = dy
 	big    = 1.00*dx/30
@@ -61,9 +63,9 @@ svggrid = (headers,ws,digits,n,dx,dy,totalWidth) ->
 				anchor = 'end'
 				dist = dx*0.45
 			res.push svgtext digit,x0+dist,y0,anchor,ts=small
-	res.push svgtext 'Berger - Round Robin',0,dy*(n+1.4),'start',small
+	res.push svgtext 'Round Robin',0,dy*(n+1.4),'start',small
 	res.push svgtext 'Observera att placeringarna utgörs av BORDSNUMMER',totalWidth/2,dy*(n+1.4),'middle',small
-	res.push svgtext 'Courtesy of Wasa SK',totalWidth,dy*(n+1.4),'end',small
+	res.push svgtext 'Christer Nilsson',totalWidth,dy*(n+1.4),'end',small
 	res.join crlf
 
 export bergerSVG = (w,h) ->
@@ -116,7 +118,7 @@ export bergerSVG = (w,h) ->
 	for i in range nx
 		for j in range ny
 			c += svguse "berger", i*totalWidth, j*totalHeight, skalax, skalay
-	"<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='#{1630}' height='#{1140}' >" + c + '</svg>'
+	"<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 #{1630} #{1140}' >" + c + '</svg>'
 
 getLocalCoords = ->
 	matrix = drawingContext.getTransform()
