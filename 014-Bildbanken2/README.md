@@ -39,8 +39,8 @@ De kombineras automatiskt med **och** och **eller**
 Underscore kan användas för att binda ihop två eller flera ord, t ex *Anna_Cramling*.  
 Det innebär att både *Anna* och *Cramling* måste vara med i bildtexten.
 
-Sökningen är känslig för VERSALER och gemener.
-De ord man anger kan vara delord, även enstaka tecken, och de kan stå var som helst i orden. T ex kommer "sson" att matcha ett antal Karlsson och Nilsson  
+**Case**: Styr om sökningen ska skilja på VERSALER och gemener. Default: off.  
+**All**: Styr om sökningen även ska ske inne i ord. T ex kan "sson" matcha både Karlsson och Nilsson.  Default: off.
 
 Tom söksträng innebär att alla bilder matchar.
 
