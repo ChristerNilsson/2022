@@ -69,14 +69,14 @@ if len(members) > 0:
 		if ssfid in exceptions:
 			target = exceptions[ssfid]
 			if target == 'nix': missing_people.append(name)
-			else: new_members[member['id']] = target
+			new_members[member['id']] = target
 			continue
 
 		for photo in photos:
-			key = photo[0]
+			target = photo[0]
 			path = photo[1]
 			if name in path:
-				new_members[member['id']] = key
+				new_members[member['id']] = target
 				found = True
 				break
 
