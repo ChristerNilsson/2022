@@ -3,25 +3,19 @@ import json
 import time
 from datetime import date
 
-DISTRICT       = 5821 # Stockholm
-EXCEPTIONS     = "member_photos/exceptions.txt"
+# AREA           = 'district/5821' # Stockholm
+AREA           = 'federation'
+
 BILDER         = 'public/json/bilder.json'
 MISSING_PEOPLE = "member_photos/missing_people.txt"
 MEMBERS        = "public/json/members.json"
 
-exceptions = {}
 start = time.time()
 
-def fetchDistrict(id,month):
-	url = f"https://member.schack.se/public/api/v1/ratinglist/district/{id}/date/{month}-01/ratingtype/1/category/0"
+def fetchArea(area,month):
+	url = f"https://member.schack.se/public/api/v1/ratinglist/{area}/date/{month}-01/ratingtype/1/category/0"
 	with urllib.request.urlopen(url) as response:
 		return json.loads(response.read().decode('utf-8'))
-
-with open(EXCEPTIONS, encoding = 'utf-8') as f	:
-	lines = f.readlines()
-	for line in lines:
-		arr = line.strip().split(' ')
-		exceptions[arr[0]] = arr[1]
 
 def loadCache():
 	with open(BILDER, 'r', encoding="utf8") as f:
@@ -38,7 +32,7 @@ def flatten(node, res={}, path=''):
 
 try:
 	current_month = date.today().strftime("%Y-%m")
-	members = fetchDistrict(DISTRICT,current_month)
+	members = fetchArea(AREA,current_month)
 except:
 	members = []
 
@@ -66,11 +60,6 @@ if len(members) > 0:
 		name = member['firstName'] + ' ' + member['lastName']
 		name = name.replace(' ','_')
 		found = False
-		if ssfid in exceptions:
-			target = exceptions[ssfid]
-			if target == 'nix': missing_people.append(name)
-			new_members[member['id']] = target
-			continue
 
 		for photo in photos:
 			target = photo[0]

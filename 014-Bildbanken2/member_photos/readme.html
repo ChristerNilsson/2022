@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Matchning av SSFID mot l&auml;mpliga bilder</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="matchning-av-ssfid-mot-lämpliga-bilder">Matchning av SSFID mot lämpliga bilder</h1>
+<p>Idag kan man visa en person, i <a href="http://member.schack.se">member.schack.se</a>, i olika kontexter.<br>
+<a href="http://member.schack.se">member.schack.se</a> har en funktion, getPlayerPhoto(SSFID) som returnerar ett PhotoID.<br>
+Denna funktion behöver bytas ut pga byte från BB1 till BB2.</p>
+<p>När man klickar på en person, visas bl a en bild på honom. Denna bild hämtas mha getPlayerPhoto.</p>
+<h2 id="in-bilderjson">IN: bilder.json</h2>
+<pre><code>&quot;Fredagsträning_Axel_Grettve_Odenfors_och_Lo_Ljungros_2021-12-03.jpg&quot;:[475,295,1565908,2048,1271,&quot;AN2FQnu3w8&quot;]
+</code></pre>
+<h2 id="in-membersjson">IN: members.json</h2>
+<p><code>url = f&quot;https://member.schack.se/public/api/v1/ratinglist/federation/date/{month}-01/ratingtype/1/category/0&quot;</code></p>
+<p>Ur denna json-fil hämtas <a href="http://member.id">member.id</a>, member.first_name samt member.last_name</p>
+<h2 id="ut-membersjson">UT: members.json</h2>
+<p>Denna fil nås via följande url och hämtas av SSF, kanske en gång per dygn.</p>
+<pre><code>bildbanken.schack.se/json/members.json
+
+{
+  &quot;365100&quot;: &quot;AfAJudSkC1&quot;,
+  &quot;637274&quot;: &quot;AcHEvIYZvz&quot;
+}
+</code></pre>
+<h2 id="tillvägagångssätt">Tillvägagångssätt</h2>
+<p>För varje SSFID väljs senaste photoId.</p>
+<pre><code>for member in members:
+	# replace space with underscore in the name
+	for photo in photos:
+		if member.name in photo.text:
+			member.photoId = photo.id
+			break
+
+
+Observera att en bild kan innehålla noll eller flera namn.  
+Varje medlem associeras alltid med den senaste bilden.  
+Ogillar medlemmen det, får medlemmen tala om vilken bild han vill visa eller ingen alls.  
+Det sker i SSF medlemsdatabas.
+
+</code></pre>
+
+            
+            
+        </body>
+        </html>

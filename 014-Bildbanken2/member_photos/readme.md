@@ -14,7 +14,7 @@ När man klickar på en person, visas bl a en bild på honom. Denna bild hämtas
 
 ## IN: members.json
 
-```url = f"https://member.schack.se/public/api/v1/ratinglist/district/{id}/date/{month}-01/ratingtype/1/category/0"```
+```url = f"https://member.schack.se/public/api/v1/ratinglist/federation/date/{month}-01/ratingtype/1/category/0"```
 
 Ur denna json-fil hämtas member.id, member.first_name samt member.last_name
 
@@ -36,26 +36,16 @@ För varje SSFID väljs senaste photoId.
 
 ```
 for member in members:
-	if member.ssfid in exceptions:
-		member.photoId = execeptions[member.ssfid]
-	else:
-		# replace space with underscore in the name
-		for photo in photos:
-			if member.name in photo.text:
-				member.photoId = photo.id
-				break
+	# replace space with underscore in the name
+	for photo in photos:
+		if member.name in photo.text:
+			member.photoId = photo.id
+			break
 
 
 Observera att en bild kan innehålla noll eller flera namn.  
 Varje medlem associeras alltid med den senaste bilden.  
 Ogillar medlemmen det, får medlemmen tala om vilken bild han vill visa eller ingen alls.  
-Det sker i exceptions.txt.
-
-exceptions.txt:
-
-357288 B8NCKqaAUe
-510953 nix
-716556 AsSEtdLovK
-
+Det sker i SSF medlemsdatabas.
 
 ```
